@@ -33,7 +33,7 @@
             <!-- AWAL DARI BAGIAN KONTEN --> 
                 
                 <!-- Bagian form tambah data -->
-                <form method="POST" id="tambahData" action="proses-tambah.php" style="display: none;">
+                <form method="POST" id="tambahData" action="proses-tambah.php" style="display: none;" enctype="multipart/form-data">
                   <input type="hidden" value="" name="kd_barang" />
                   <div class="card">
                     <div class="card-header">
@@ -64,6 +64,20 @@
                           <?php endforeach; ?>
                         </select>
                       </div>
+                      
+                      <div class="form-group">
+                        <label for="foto_1">Foto 1</label>
+                        <input type="file" class="form-control" name="foto_1">
+                      </div>
+                      <div class="form-group">
+                        <label for="foto_2">Foto 2</label>
+                        <input type="file" class="form-control" name="foto_2">
+                      </div>
+                      <div class="form-group">
+                        <label for="foto_3">Foto 3</label>
+                        <input type="file" class="form-control" name="foto_3">
+                      </div>
+                      
                     </div>
                     <div class="card-action">
                       <button type="submit" class="btn btn-success">Simpan</button>

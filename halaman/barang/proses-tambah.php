@@ -1,32 +1,27 @@
 <?php
   require_once("../../vendor/autoload.php");
+  require_once("../../pengaturan/helper.php");
   require_once("../../pengaturan/pengaturan.php");
   require_once("../../pengaturan/database.php");
   
+  $foto_1 = "";
+  $foto_2 = "";
+  $foto_3 = "";
+  
+  $foto_1 = fileUpload($_FILES['foto_1'], "../../assets/img/produk/");
+  $foto_2 = fileUpload($_FILES['foto_2'], "../../assets/img/produk/");
+  $foto_3 = fileUpload($_FILES['foto_3'], "../../assets/img/produk/");
+  
   // Proses menambah data ke database
-  $db->query("
-    INSERT INTO barang
-      (
-        nm_barang,
-        hrg_beli,
-        hrg_jual,
-        stok,
-        kd_kategori
-      ) 
-    VALUES
-      (
-        :nm_barang,
-        :hrg_beli,
-        :hrg_jual,
-        :stok,
-        :kd_kategori
-      )
-  ", [
+  $db->insert("barang", [
     'nm_barang' => $_POST['nm_barang'],
     'hrg_beli' => $_POST['hrg_beli'],
     'hrg_jual' => $_POST['hrg_jual'],
     'stok' => $_POST['stok'],
-    'kd_kategori' => $_POST['kd_kategori']
+    'kd_kategori' => $_POST['kd_kategori'],
+    'foto_1' => $foto_1,
+    'foto_2' => $foto_2,
+    'foto_3' => $foto_3
   ]);
   $error = $db->error();
   if($error[0] != '00000')
