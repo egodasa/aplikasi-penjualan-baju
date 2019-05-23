@@ -27,7 +27,15 @@
       ['judul' => 'Laporan Penjualan Harian' ,'url' => '/halaman/penjualan/laporan.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Laporan Penjualan Bulanan' ,'url' => '/halaman/penjualan/laporan-bulanan.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Laporan Penjualan Tahunan' ,'url' => '/halaman/penjualan/laporan-tahunan.php', 'icon' => 'la-dashboard']
-    ]
+    ],
+    'Pengunjung' => [
+      ['judul' => 'Beranda' ,'url' => '/', 'icon' => 'la-dashboard'],
+      ['judul' => 'Login' ,'url' => '/login', 'icon' => 'la-dashboard'],
+      ['judul' => 'Register' ,'url' => '/register', 'icon' => 'la-dashboard'],
+      ['judul' => 'Tentang Kami' ,'url' => '/tentang-kami.php', 'icon' => 'la-dashboard'],
+      ['judul' => 'Cara Berbelanja' ,'url' => '/cara-belanja.php', 'icon' => 'la-dashboard']
+    ],
+    
   ];
 ?>
 <div class="sidebar">
@@ -35,7 +43,7 @@
     <div class="scrollbar-inner sidebar-wrapper scroll-content scroll-scrolly_visible" style="height: auto; margin-bottom: 0px; margin-right: 0px; max-height: 304px;">
       <ul class="nav">
         <?php
-          $level = $_SESSION['jenis_pengguna'];
+          $level = isset($_SESSION['jenis_pengguna']) ? $_SESSION['jenis_pengguna'] : "Pengunjung";
           foreach($menu[$level] as $d):
         ?>
           <li class="nav-item">
