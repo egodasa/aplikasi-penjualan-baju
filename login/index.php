@@ -1,4 +1,5 @@
 <?php
+  require_once("../pengaturan/helper.php");
   require_once("../pengaturan/pengaturan.php");
   $judul = "Maryam Store";
 ?>
@@ -21,6 +22,12 @@
     <div class="card" id="login-form">
       <div class="card-header">
         <p style="font-size: 20pt; font-weight: bold; text-align: center;"><?=$nama_perusahaan?></p>
+        <?php
+          if(isset($_GET['daftar']))
+          {
+            echo alertBootstrap("success", "Berhasil!", "Registrasi berhasil. Anda sudah bisa login sekarang.");
+          }
+        ?>
       </div>
       <div class="card-body">
         <form method="POST" action="proses-login.php">

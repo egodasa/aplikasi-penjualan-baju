@@ -7,4 +7,21 @@
   <link rel="stylesheet" href="<?=$alamat_web?>/assets/css/demo.css">
   <link rel="stylesheet" href="<?=$alamat_web?>/assets/css/selectize.bt3.css">
   <link href="<?=$alamat_web?>/assets/css/pikaday.css" rel="stylesheet" type="text/css" />
+  <style>
+  .carousel {
+    margin-top: 20px;
+  }
+  .item .thumb {
+    width: 33%;
+    cursor: pointer;
+    float: left;
+  }
+  .item .thumb img {
+    width: 100%;
+    margin: 2px;
+  }
+  .item img {
+    width: 100%;	
+  }
+  </style>
 </head>

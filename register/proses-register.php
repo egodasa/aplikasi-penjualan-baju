@@ -6,12 +6,12 @@
   
   $cek_username = $db->get("pengguna", ['username'], ['username' => $_POST['username']]);
   
-  if(!empty($cek_username))
+  if(empty($cek_username))
   {
     $db->insert("pengguna", [
       'username' => $_POST['username'],
       'nm_pengguna' => $_POST['nm_pengguna'],
-      'password' => $_POST['password'],
+      'password' => md5($_POST['password']),
       'jenis_pengguna' => "Pelanggan",
       'nohp' => $_POST['nohp'],
       'alamat' => $_POST['alamat']

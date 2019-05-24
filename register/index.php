@@ -41,7 +41,7 @@
           </div>
           <div class="form-group">
             <label for="nm_lengkap"></label>
-            <input type="nm_lengkap" class="form-control" name="nm_lengkap" placeholder="Nama Lengkap" required />
+            <input type="nm_lengkap" class="form-control" name="nm_pengguna" placeholder="Nama Lengkap" required />
           </div>
           <div class="form-group">
             <label for="nohp"></label>

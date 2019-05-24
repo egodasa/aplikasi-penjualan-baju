@@ -269,19 +269,7 @@ function tanggal_indo_bulan_tahun($tanggal){
    $waktu = explode(" ", tanggal_indo_waktu($tanggal));
    return $waktu[1]." ".$waktu[2];
 }
-function alertBootstrap($jenis_alert = "success", $judul = "Pesan!", $isi_pesan = "Isi Pesan."){
-   $icon_alert = array(
-      "success" => "check",
-      "warning" => "warning",
-      "info" => "info",
-      "danger" => "ban",
-   );
-   return "<div class='alert alert-".$jenis_alert." alert-dismissible'>
-   <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
-   <h4><i class='icon fa fa-".$icon_alert['$jenis_alert']."'></i> ".$judul."</h4>
-   ".$isi_pesan."
-   </div>";
-}
+
 function namaBulan($angka_bulan){
    $bulan = array(
      '01' => 'Januari',
@@ -374,12 +362,31 @@ function penyebutanUrutan($angka)
     return str_replace(" ", "", $hasil_tmp);
   }
 }
+function generateNumber()
+{
+  $now = DateTime::createFromFormat('U.u', microtime(true));
+  return $now->format("dmyHisu");
+}
 function fileUpload($files, $lokasi){
   $file_tmp = $files['tmp_name'];
-  $file_ext=strtolower(end(explode('.', $files['name'])));
+  $file_name = explode('.', $files['name']);
+  $file_ext = strtolower(end($file_name));
   $nama_file = generateNumber().".".$file_ext;
   $lokasi_file = $lokasi.$nama_file;
   move_uploaded_file($file_tmp, $lokasi_file);
   return $nama_file;
+}
+function alertBootstrap($jenis_alert = "success", $judul = "Pesan!", $isi_pesan = "Isi Pesan."){
+   $icon_alert = array(
+      "success" => "check",
+      "warning" => "warning",
+      "info" => "info",
+      "danger" => "ban",
+   );
+   return "<div class='alert alert-".$jenis_alert." alert-dismissible'>
+   <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+   <h4><i class='icon fa fa-".$icon_alert[$jenis_alert]."'></i> ".$judul."</h4>
+   ".$isi_pesan."
+   </div>";
 }
 ?>

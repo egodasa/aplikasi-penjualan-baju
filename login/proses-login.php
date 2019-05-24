@@ -13,9 +13,19 @@
   }
   else
   {
+    $_SESSION['kd_pengguna'] = $cek_login['kd_pengguna'];
     $_SESSION['username'] = $cek_login['username'];
     $_SESSION['nm_pengguna'] = $cek_login['nm_pengguna'];
     $_SESSION['jenis_pengguna'] = $cek_login['jenis_pengguna'];
-    header("Location: ".$alamat_web."/halaman/beranda");
+    if($cek_login['jenis_pengguna'] == "Pelanggan")
+    {
+      header("Location: ".$alamat_web."/index.php");
+    }
+    else
+    {
+      header("Location: ".$alamat_web."/halaman/beranda");
+    }  
+    
+    
   }
 ?>

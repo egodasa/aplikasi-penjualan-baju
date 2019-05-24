@@ -15,6 +15,55 @@
     ?>
       <div class="container-fluid">
         <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+          <?php
+            if($_SESSION['jenis_pengguna'])
+            {
+          ?>
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <span>Keranjang</span> </a>
+              <ul class="dropdown-menu dropdown-user" style="width: auto;">
+                <li>
+                  <div class="container">
+                  <table class="table table-bordered" style="width: 100%;">
+                    <tr>
+                      <th>No</th>
+                      <th>Nama Produk</th>
+                      <th>Jumlah</th>
+                      <th>Sub Total</th>
+                    </tr>
+                    <?php
+                      $sql = "SELECT a.*, b.nm_barang, b.hrg_jual, (a.jumlah*b.hrg_jual) AS sub_total FROM keranjang a JOIN barang b ON a.kd_barang = b.kd_barang WHERE a.kd_pengguna = ".$_SESSION['kd_pengguna'];
+
+                      $total = 0;
+                      $keranjang = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+                    ?>
+                    
+                    <?php
+                      foreach($keranjang as $nomor => $d)
+                      {
+                        $total += $d['sub_total'];
+                    ?>
+                      <tr>
+                        <td><?=($nomor+1)?></td>
+                        <td><?=$d['nm_barang']?></td>
+                        <td><?=$d['jumlah']?></td>
+                        <td><?=rupiah($d['sub_total'])?></td>
+                      </tr>
+                    <?php
+                      }
+                    ?>
+                    <tr>
+                      <td colspan="3">Total</td>
+                      <td><?=rupiah($total)?></td>
+                    </tr>
+                  </table>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          <?php
+            }
+          ?>
           <li class="nav-item dropdown">
             <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="<?=$alamat_web?>/assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"><span><?=$_SESSION['username']?></span> </a>
             <ul class="dropdown-menu dropdown-user">
