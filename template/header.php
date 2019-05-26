@@ -30,6 +30,7 @@
                       <th>Nama Produk</th>
                       <th>Jumlah</th>
                       <th>Sub Total</th>
+                      <th colspan="2">Aksi</th>
                     </tr>
                     <?php
                       $sql = "SELECT a.*, b.nm_barang, b.hrg_jual, (a.jumlah*b.hrg_jual) AS sub_total FROM keranjang a JOIN barang b ON a.kd_barang = b.kd_barang WHERE a.kd_pengguna = ".$_SESSION['kd_pengguna'];
@@ -48,12 +49,22 @@
                         <td><?=$d['nm_barang']?></td>
                         <td><?=$d['jumlah']?></td>
                         <td><?=rupiah($d['sub_total'])?></td>
+                        <td>
+                          <form action="<?=$alamat_web?>/keranjang/edit.php" method="POST">
+                            <input type="hidden" name="kd_barang" value="<?=$d['kd_barang']?>" />
+                            <input type="number" min=1 name="jumlah" value="<?=$d['jumlah']?>" class="form-control" required>
+                            <button type="submit" class="btn btn-sm btn-success">Ganti Jumlah</button>
+                          </form>
+                        </td>
+                        <td>
+                          <a href="<?=$alamat_web?>/keranjang/hapus.php?kd_barang=<?=$d['kd_barang']?>" class="btn btn-sm btn-danger">Hapus</a>
+                        </td>
                       </tr>
                     <?php
                       }
                     ?>
                     <tr>
-                      <td colspan="3">Total</td>
+                      <td colspan="5">Total</td>
                       <td><?=rupiah($total)?></td>
                     </tr>
                   </table>

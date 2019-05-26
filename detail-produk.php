@@ -5,14 +5,6 @@
   require_once("pengaturan/helper.php");
   require_once("pengaturan/pengaturan.php");
   
-  if($_SERVER['REQUEST_METHOD'] == "POST")
-  {
-    $db->insert("keranjang", [
-      'kd_pengguna' => $_SESSION['kd_pengguna'],
-      'kd_barang' => $_GET['kd_barang'],
-      'jumlah' => $_POST['jumlah'],
-    ]);
-  }
   
   $barang = $db->get("barang", "*", ['kd_barang' => $_GET['kd_barang']]);
   
@@ -55,26 +47,46 @@
                   </div>
                 </div>
               </div>
+              <?php
+                if(isset($_SESSION['jenis_pengguna']) && $_SESSION['jenis_pengguna'] == "Pelanggan")
+                {
+              ?>
               <div class="card-footer">
                 <div class="row">
                   <div class="col-sm-6 col-xs-12">
                     <h4>Tambahkan ke Keranjang</h4>
                   </div>
                   <div class="col-sm-6 col-xs-12">
-                    <form method="POST">
-                      <input type="hidden" name="kd_produk" value="<?=$_GET['kd_produk']?>" />
+                    <form method="POST" action="<?=$alamat_web?>/keranjang/tambah.php">
+                      <input type="hidden" name="kd_barang" value="<?=$_GET['kd_barang']?>" />
                       <input type="number" name="jumlah" />
                       <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>
                   </div>
                 </div>
               </div>
+              <?php
+                }
+              ?>
             </div>
           </div>
         </div>
       </div>
     </div>
-    
+    <?php
+      if(isset($_GET['berhasil']))
+      {
+        echo "<script>alert('Barang berhasil ditambahkan ke keranjang');</script>";
+      }
+      if(isset($_GET['hapus']))
+      {
+        echo "<script>alert('Barang berhasil dihapus dari keranjang');</script>";
+      }
+      if(isset($_GET['edit']))
+      {
+        echo "<script>alert('Barang berhasil diedit');</script>";
+      }
+    ?>
     <!-- semua asset js dibawah ini -->
     <?php include("template/script.php") ?>
   </body>
