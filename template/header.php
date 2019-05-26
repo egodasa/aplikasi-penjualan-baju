@@ -16,7 +16,7 @@
       <div class="container-fluid">
         <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
           <?php
-            if($_SESSION['jenis_pengguna'])
+            if($_SESSION['jenis_pengguna'] == 'Pelanggan')
             {
           ?>
             <li class="nav-item dropdown">

@@ -7,7 +7,9 @@
       ['judul' => 'Data Pengguna' ,'url' => '/halaman/pengguna/index.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Data Penjualan' ,'url' => '/halaman/penjualan/index.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Data Pembelian' ,'url' => '/halaman/pembelian/index.php', 'icon' => 'la-dashboard'],
-      ['judul' => 'Data Pelanggan' ,'url' => '/halaman/pelanggan/index.php', 'icon' => 'la-dashboard']
+      ['judul' => 'Data Pelanggan' ,'url' => '/halaman/pelanggan/index.php', 'icon' => 'la-dashboard'],
+      ['judul' => 'Data Kota' ,'url' => '/halaman/kota/index.php', 'icon' => 'la-dashboard'],
+      ['judul' => 'Data Jasa Pengiriman' ,'url' => '/halaman/jasa/index.php', 'icon' => 'la-dashboard']
     ],
     'Karyawan Gudang' => [
       ['judul' => 'Beranda' ,'url' => '/halaman/beranda', 'icon' => 'la-dashboard'],
