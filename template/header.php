@@ -67,6 +67,11 @@
                       <td colspan="5">Total</td>
                       <td><?=rupiah($total)?></td>
                     </tr>
+                    <tr>
+                      <td colspan="6">
+                        <a href="<?=$alamat_web?>/checkout.php" class="btn btn-success">Selesaikan Belanja</a>
+                      </td>
+                    </tr>
                   </table>
                   </div>
                 </li>
