@@ -37,7 +37,12 @@
       ['judul' => 'Tentang Kami' ,'url' => '/tentang-kami.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Cara Berbelanja' ,'url' => '/cara-belanja.php', 'icon' => 'la-dashboard']
     ],
-    
+    'Pelanggan' => [
+      ['judul' => 'Beranda' ,'url' => '/', 'icon' => 'la-dashboard'],
+      ['judul' => 'Tentang Kami' ,'url' => '/tentang-kami.php', 'icon' => 'la-dashboard'],
+      ['judul' => 'Cara Berbelanja' ,'url' => '/cara-belanja.php', 'icon' => 'la-dashboard'],
+      ['judul' => 'Daftar Transaksi' ,'url' => '/halaman/pelanggan/transaksi', 'icon' => 'la-dashboard']
+    ]
   ];
 ?>
 <div class="sidebar">
