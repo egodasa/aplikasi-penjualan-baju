@@ -19,7 +19,15 @@
   $ket_waktu_tmp = explode("-", $waktu);
   $ket_waktu = $ket_waktu_tmp[0];
   
-  $daftar_penjualan = $db->query("SELECT MONTH(a.tgl_penjualan) AS bln, SUM(b.jml) AS jml, SUM(b.total_hrg) AS total_hrg FROM penjualan a JOIN detail_penjualan b ON a.kd_penjualan = b.kd_penjualan WHERE YEAR(a.tgl_penjualan) = YEAR(:waktu) GROUP BY MONTH(a.tgl_penjualan)", ['waktu' => $waktu])->fetchAll(PDO::FETCH_ASSOC);  
+  $daftar_penjualan = $db->query("SELECT MONTH(a.tgl_transaksi) AS bln, 
+                                    SUM(b.ongkir) AS ongkir,
+                                    SUM(c.jumlah) AS jumlah,
+                                    SUM((c.jumlah * d.hrg_jual)) AS total   
+                                     FROM transaksi a 
+                                    JOIN ongkir b ON a.id_ongkir = b.id_ongkir 
+                                    JOIN detail_transaksi c ON a.kd_transaksi = c.kd_transaksi 
+                                    JOIN barang d ON c.kd_barang = d.kd_barang 
+                                    WHERE a.status_transaksi = 'Barang Akan Dikirimkan' AND YEAR(a.tgl_transaksi) = YEAR(:waktu) GROUP BY MONTH(a.tgl_transaksi)", ['waktu' => $waktu])->fetchAll(PDO::FETCH_ASSOC);  
 ?>
 
 <html>
@@ -80,14 +88,14 @@
                             $jml = 0;
                             $total_hrg = 0;
                             foreach($daftar_penjualan as $i=>$d):
-                              $jml += $d['jml'];
-                              $total_hrg += $d['total_hrg'];
+                              $jml += $d['jumlah'];
+                              $total_hrg += $d['total'] + $d['ongkir'];
                           ?>
                               <tr>
                                 <td><?=$no?></td>
                                 <td><?=namaBulan($d['bln'])?></td>
-                                <td><?=$d['jml']?></td>
-                                <td><?=rupiah($d['total_hrg'], "")?></td>
+                                <td><?=$d['jumlah']?></td>
+                                <td><?=rupiah(($d['total'] + $d['ongkir']), "")?></td>
                               </tr>
                           <?php
                             $no++;

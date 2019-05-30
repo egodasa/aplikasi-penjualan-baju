@@ -15,7 +15,7 @@
     }
   }
   
-  $daftar_penjualan = $db->query("SELECT a.*, b.nm_pelanggan FROM penjualan a JOIN pelanggan b ON a.kd_pelanggan = b.kd_pelanggan WHERE a.tgl_penjualan = DATE(:waktu)", ['waktu' => $waktu])->fetchAll(PDO::FETCH_ASSOC);  
+  $daftar_penjualan = $db->query("SELECT a.*, (SELECT SUM(bb.hrg_jual) FROM detail_transaksi aa JOIN barang bb ON aa.kd_barang = bb.kd_barang WHERE aa.kd_transaksi = a.kd_transaksi) + b.ongkir AS total_bayar FROM transaksi a JOIN ongkir b ON a.id_ongkir = b.id_ongkir JOIN jasa_pengiriman c ON b.id_jasa = c.id_jasa JOIN kota d ON b.id_kota = d.id_kota JOIN pengguna e ON a.kd_pelanggan = e.kd_pengguna WHERE a.tgl_transaksi = DATE(:waktu) AND a.status_transaksi = 'Barang Akan Dikirimkan'", ['waktu' => $waktu])->fetchAll(PDO::FETCH_ASSOC);  
 ?>
 
 <html>
@@ -65,9 +65,8 @@
 												<thead>
                           <tr>
                             <th>No</th>
-                            <th>Kode Penjualan</th>
-                            <th>Tanggal Penjualan</th>
-                            <th>Nama Pelanggan</th>
+                            <th>Kode Transaksi</th>
+                            <th>Tanggal</th>
                             <th>Total Harga (Rp)</th>
                           </tr>
                         </thead>
@@ -76,21 +75,20 @@
                             $no = 1;
                             $total = 0;
                             foreach($daftar_penjualan as $i=>$d):
-                              $total += $d['total_hrg'];
+                              $total += $d['total_bayar'];
                           ?>
                             <tr>
                               <td><?=$no?></td>
-                              <td><?=$d['kd_penjualan']?></td>
-                              <td><?=tanggal_indo($d['tgl_penjualan'])?></td>
-                              <td><?=$d['nm_pelanggan']?></td>
-                              <td><?=rupiah($d['total_hrg'], "")?></td>
+                              <td><?=$d['kd_transaksi']?></td>
+                              <td><?=tanggal_indo($d['tgl_transaksi'])?></td>
+                              <td><?=rupiah($d['total_bayar'], "")?></td>
                             </tr>
                           <?php
                             $no++;
                             endforeach;
                           ?>
                           <tr>
-                            <td class="text-right" colspan="4"><b>Total</b></td>
+                            <td class="text-right" colspan="3"><b>Total</b></td>
                             <td><?=rupiah($total, "")?></td>
                           </tr>
                         </tbody>
