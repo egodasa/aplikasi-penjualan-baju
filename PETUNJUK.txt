@@ -1,0 +1,112 @@
+-- PERINGATAN --
+1. BACA FILE INI DARI ATAS SAMPAI KEBAWAH SECARA BERURUTAN. JANGAN DARI BAWAH KEATAS ATAU DARI ATAS LANGSUNG KE TENGAH.
+2. JANGAN MENGGUNAKAN MYSQLI_QUERY ATAU MYSQL_QUERY...
+   KALAU ADA CARA MUDAH, KENAPA PAKAI YANG SUSAH -_-
+-- AKHIR DARI PERINGATAN --
+
+
+
+-- PENGATURAN APLIAKSI --
+BUKA FILE di pengaturan/pengaturan.php untuk semua pengaturan aplikasi.
+
+Mulai dari database, nama toko, nama pimpinan dll.
+
+Untuk koneksi database, menggunakan library bernama MEDOO yang dapat dibaca dokumentasinya di https://medoo.in/doc
+-- AKHIR DARI PENGATURAN APLIKASI --
+
+
+-- CARA MENGGUNAKAN LIBRARY MEDOO UNTUK MENJALANKAN QUERY SQL --
+Sematkan kode berikut dibagian paling atas halaman :
+
+require('../pengaturan/helper.php'); // File ini menampung berbagai macam fungsi seperti fungsi rupiah, tanggal indo dll.
+require('../vendor/autoload.php');
+require('../pengaturan/medoo.php');
+
+Cara penggunaan medoo :
+
+
+
+CARA MENJALANKAN QUERY SQL MENTAH PADA MEDOO:
+
+// GANTI fetchAll(PDO::FETCH_ASSOC) JADI fetch() UNTUK MENGAMBIL SATU BARIS RECORD SAJA
+$barang = $db->query("SELECT nm_barang, stok FROM tbl_barang")->fetchAll(PDO::FETCH_ASSOC);
+$daftar_barang = $db->select("tbl_barang", ['nm_barang', 'stok']); 
+foreach($daftar_barang as $barang)
+{
+	echo $barang['nm_barang'];
+}
+
+
+KODE DIATAS SETARA DENGAN :
+$query = mysqli_query($db, "SELECT nm_barang, stok FROM tbl_barang");
+while($barang = mysqli_fetch_assoc($query))
+{
+	echo $barang['nm_barang'];
+}
+
+
+
+$insert_barang = $db->query("INSERT INTO tbl_barang (nm_barang, stok) VALUES ('$_POST[nm_barang]', '$_POST[stok]')");
+$update_barang = $db->query("UPDATE tbl_barang SET nm_barang = '$_POST[nm_barang]', stok = $_POST[stok] WHERE id_barang = $_GET[id_barang]");
+$delete_barang = $db->query("DELETE FROM tbl_barang WHERE id_barang = $_GET[id_barang]");
+---------------------------------------------------------------------------------------------
+
+
+
+CARA BAWAAN DARI MEDOO ALIAS MENJALANKAN QUERY SQL TIDAK MENTAH
+---------------------------------------------------------------------
+CARA SELECT SATU DATA SAJA:
+$barang = $db->get("tbl_barang", "*");
+echo $barang['nm_barang'];
+
+KODE DIATAS SETARA DENGAN:
+$query = mysqli_query($db, "SELECT * FROM tbl_barang");
+$barang = mysqli_fetch_array($query);
+echo $barang['nm_barang'];
+
+--------------------------------------------------------
+
+CARA SELECT BANYAK DATA :
+$daftar_barang = $db->select("tbl_barang", ['nm_barang', 'stok']); 
+foreach($daftar_barang as $barang)
+{
+	echo $barang['nm_barang'];
+}
+
+KODE DIATAS SETARA DENGAN :
+$query = mysqli_query($db, "SELECT nm_barang, stok FROM tbl_barang");
+while($barang = mysqli_fetch_assoc($query))
+{
+	echo $barang['nm_barang'];
+}
+
+--------------------------------------------------------
+
+
+CARA INSERT DATA: 
+$db->insert("tbl_barang", ["nm_barang" => $_POST['nm_barang'], "stok" => $_POST['stok']]);
+
+KODE DIATAS SETARA DENGAN:
+mysqli_query("INSERT INTO tbl_barang (nm_barang, stok) VALUES ('$_POST[nm_barang]', '$_POST[stok]')");
+
+--------------------------------------------------------
+
+
+
+CARA UPDATE DATA: 
+$db->insert("tbl_barang", ["nm_barang" => $_POST['nm_barang'], "stok" => $_POST['stok']], ['id_barang' => $_GET['id_barang']]);
+
+KODE DIATAS SETARA DENGAN:
+mysqli_query("UPDATE tbl_barang SET nm_barang = '$_POST[nm_barang]', stok = $_POST[stok] WHERE id_barang = $_GET[id_barang]");
+
+
+--------------------------------------------------------
+
+CARA DELETE DATA: 
+$db->delete("tbl_barang", ['id_barang' => $_GET['id_barang']]);
+
+KODE DIATAS SETARA DENGAN:
+mysqli_query("DELETE FROM tbl_barang WHERE id_barang = $_GET[id_barang]");
+
+
+-- AKHIR DARICARA MENGGUNAKAN LIBRARY MEDOO UNTUK MENJALANKAN QUERY SQL --

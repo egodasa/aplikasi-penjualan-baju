@@ -34,7 +34,7 @@
                 <!-- Bagian tabel -->
                 <div class="card" id="daftarData" style="display: block;">
                   <div class="card-header">
-                    <div class="card-title">Daftar Transaksi</div>
+                    <div class="card-title">Riwayat Pemesanan</div>
                   </div>
                   <div class="card-body">
                     <div class="table-responsive">

@@ -57,6 +57,10 @@
                         <input type="number" class="form-control" name="stok">
                       </div>
                       <div class="form-group">
+                        <label for="safety_stock">Stok Minimal</label>
+                        <input type="number" class="form-control" name="safety_stock">
+                      </div>
+                      <div class="form-group">
                         <label for="kd_kategori">Kategori</label>
                         <select name="kd_kategori" class="form-control">
                           <?php foreach($daftar_kategori as $d): ?>
@@ -76,6 +80,50 @@
                       <div class="form-group">
                         <label for="foto_3">Foto 3</label>
                         <input type="file" class="form-control" name="foto_3">
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                          <div class="form-group">
+                            <label for="nohp">Tahun Penjualan (Tahun)</label>
+                            <input type="text" class="form-control" name="tahun_penjualan">
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <div class="form-group">
+                            <label for="nohp">Jumlah Penjualan (Pcs)</label>
+                            <input type="text" class="form-control" name="jumlah_penjualan">
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <div class="form-group">
+                            <label for="nohp">Biaya Pesan (RP)</label>
+                            <input type="text" class="form-control" name="biaya_pesan">
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <div class="form-group">
+                            <label for="nohp">Biaya Penyimpanan (Rp)</label>
+                            <input type="text" class="form-control" name="biaya_simpan">
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <div class="form-group">
+                            <label for="nohp">Lead Time (Hari)</label>
+                            <input type="text" class="form-control" name="lead_time">
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <div class="form-group">
+                            <label for="nohp">Hasil Perhitungan EOQ</label>
+                            <input type="text" class="form-control" name="eoq">
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <div class="form-group">
+                            <label for="nohp">Hasil Perhitungan ROP</label>
+                            <input type="text" class="form-control" name="rop">
+                          </div>
+                        </div>
                       </div>
                       
                     </div>
@@ -172,6 +220,7 @@
           document.getElementsByName('hrg_beli')[0].value = ""; 
           document.getElementsByName('hrg_jual')[0].value = ""; 
           document.getElementsByName('stok')[0].value = ""; 
+          document.getElementsByName('safety_stock')[0].value = "";
           document.getElementsByName('kd_kategori')[0].value = ""; 
         }
         else
@@ -196,9 +245,60 @@
           document.getElementsByName('hrg_jual')[0].value = data_detail[id].hrg_jual; 
           document.getElementsByName('stok')[0].value = data_detail[id].stok; 
           document.getElementsByName('kd_kategori')[0].value = data_detail[id].kd_kategori; 
-          document.getElementsByName('kd_barang')[0].value = data_detail[id].kd_barang; 
+          document.getElementsByName('kd_barang')[0].value = data_detail[id].kd_barang;
+          document.getElementsByName('safety_stock')[0].value = data_detail[id].safety_stock;
         }
       }
+      function hitungEoqDanRop()
+      {
+        console.log("jalan")
+        var R = document.getElementsByName('jumlah_penjualan')[0].value;
+        var S = document.getElementsByName('biaya_pesan')[0].value;
+        var C = document.getElementsByName('biaya_simpan')[0].value;
+        var LT = document.getElementsByName('lead_time')[0].value;
+        var EOQ = 0; 
+        var ROP = 0; 
+        if(R != "" && S != "" && C != "" && LT != "")
+        {
+          EOQ = Math.sqrt((2 * R * S) / C);
+          ROP = (R / 365) * LT;
+          document.getElementsByName("eoq")[0].value = Math.round(EOQ);
+          document.getElementsByName("rop")[0].value = Math.round(ROP);
+        }
+      }
+      
+      // Mengambil jumlah penjualan per tahun berdasarkan tahun dan barang
+      
+      function getBanyakPenjualan(){
+        var kd_barang = document.getElementsByName("kd_barang")[0].value;
+        var tahun_penjualan = document.getElementsByName("tahun_penjualan")[0].value;
+        if(kd_barang != "" && tahun_penjualan != ""){
+          axios.get("get-penjualan-tahun.php?kd_barang=" + kd_barang + "&tahun=" + tahun_penjualan)
+            .then(function(res){
+            	if(res.data.jml == undefined)
+            	{
+            		document.getElementsByName("jumlah_penjualan")[0].value = 0;
+            	}
+            	else
+            	{
+            		document.getElementsByName("jumlah_penjualan")[0].value = res.data.jml;
+            	}
+            })          
+            .catch(function(err){
+              document.getElementsByName("jumlah_penjualan")[0].value = "0";
+            })          
+        }
+      }
+      
+      // Menghitung eoq dan rop saat terjadi perubahan nilai di jumlah penjualan, biaya pesan, biaya simpan dan lead time
+      document.getElementsByName('jumlah_penjualan')[0].addEventListener("keyup", hitungEoqDanRop);
+      document.getElementsByName('biaya_pesan')[0].addEventListener("keyup", hitungEoqDanRop);
+      document.getElementsByName('biaya_simpan')[0].addEventListener("keyup", hitungEoqDanRop);
+      document.getElementsByName('lead_time')[0].addEventListener("keyup", hitungEoqDanRop);
+      
+      // Event untuk perubahan barang dan tahun penjualan
+      document.getElementsByName("tahun_penjualan")[0].addEventListener("blur", getBanyakPenjualan)  
+      document.getElementsByName("kd_barang")[0].addEventListener("change", getBanyakPenjualan) 
       noRowsTable('tabel');
     </script>
   </body>

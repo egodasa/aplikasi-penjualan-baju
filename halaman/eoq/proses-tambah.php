@@ -4,8 +4,15 @@
   require_once("../../pengaturan/database.php");
   
   // Proses menambah data ke database
+  "UPDATE barang 
+  		SET 
+  		 biaya_simpan = :biaya_simpan,
+  		 biaya_pesan = :biaya_pesan,
+  		 safety_stock = :
+  		"
+  
   $db->query("
-    INSERT INTO eoq
+    
       (
         tgl_hitung,
         kd_barang,

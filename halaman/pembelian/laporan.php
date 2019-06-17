@@ -67,7 +67,6 @@
                           <tr>
                             <th>No</th>
                             <th>Kode Pembelian</th>
-                            <th>Tanggal Pembelian</th>
                             <th>Nama Supplier</th>
                             <th>Total Harga (Rp)</th>
                           </tr>
@@ -82,7 +81,6 @@
                             <tr>
                               <td><?=$no?></td>
                               <td><?=$d['kd_pembelian']?></td>
-                              <td><?=tanggal_indo($d['tgl_pembelian'])?></td>
                               <td><?=$d['nm_supplier']?></td>
                               <td><?=rupiah($d['total_hrg'], "")?></td>
                             </tr>
@@ -91,7 +89,7 @@
                             endforeach;
                           ?>
                             <tr>
-                              <td class="text-right" colspan="4"><b>Total</b></td>
+                              <td class="text-right" colspan="3"><b>Total</b></td>
                               <td><?=rupiah($total, "")?></td>
                             </tr>
                         </tbody>

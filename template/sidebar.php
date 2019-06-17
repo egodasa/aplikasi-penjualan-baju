@@ -2,7 +2,6 @@
   $menu = [
     'Admin' => [
       ['judul' => 'Beranda' ,'url' => '/halaman/beranda', 'icon' => 'la-dashboard'],
-      ['judul' => 'Data Barang' ,'url' => '/halaman/barang/index.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Data Kategori Barang' ,'url' => '/halaman/kategori-barang/index.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Data Pengguna' ,'url' => '/halaman/pengguna/index.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Daftar Transaksi' ,'url' => '/halaman/admin/transaksi', 'icon' => 'la-dashboard'],
@@ -15,9 +14,9 @@
       ['judul' => 'Data Barang' ,'url' => '/halaman/barang/index.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Data Supplier' ,'url' => '/halaman/supplier/index.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Data Pembelian' ,'url' => '/halaman/pembelian/index.php', 'icon' => 'la-dashboard'],
+      ['judul' => 'Laporan Barang' ,'url' => '/halaman/barang/laporan.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Laporan Pembelian' ,'url' => '/halaman/pembelian/laporan.php', 'icon' => 'la-dashboard'],
-      ['judul' => 'ROP & EOQ' ,'url' => '/halaman/eoq/index.php', 'icon' => 'la-dashboard'],
-      ['judul' => 'Laporan ROP & EOQ' ,'url' => '/halaman/eoq/laporan.php', 'icon' => 'la-dashboard']
+      ['judul' => 'Hitung ROP' ,'url' => '/halaman/eoq/index.php', 'icon' => 'la-dashboard']
     ],
     'Pimpinan' => [
       ['judul' => 'Beranda' ,'url' => '/halaman/beranda', 'icon' => 'la-dashboard'],
@@ -40,7 +39,7 @@
       ['judul' => 'Beranda' ,'url' => '/', 'icon' => 'la-dashboard'],
       ['judul' => 'Tentang Kami' ,'url' => '/tentang-kami.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Cara Berbelanja' ,'url' => '/cara-belanja.php', 'icon' => 'la-dashboard'],
-      ['judul' => 'Daftar Transaksi' ,'url' => '/halaman/pelanggan/transaksi', 'icon' => 'la-dashboard']
+      ['judul' => 'Riwayat Pemesanan' ,'url' => '/halaman/pelanggan/transaksi', 'icon' => 'la-dashboard']
     ]
   ];
 ?>

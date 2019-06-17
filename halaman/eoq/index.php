@@ -5,7 +5,7 @@
   require_once("../../pengaturan/database.php");
   require_once("../../pengaturan/helper.php");
   
-  $judul = "Data ROP & EOQ";  
+  $judul = "Data ROP";  
   $daftar_eoq = $db->query("SELECT a.*, b.nm_barang FROM eoq a JOIN barang b ON a.kd_barang = b.kd_barang")->fetchAll(PDO::FETCH_ASSOC);
   $data_barang = $db->query("SELECT * FROM barang")->fetchAll(PDO::FETCH_ASSOC);
 ?>

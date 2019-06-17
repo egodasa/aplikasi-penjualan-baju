@@ -21,7 +21,8 @@
     'kd_kategori' => $_POST['kd_kategori'],
     'foto_1' => $foto_1,
     'foto_2' => $foto_2,
-    'foto_3' => $foto_3
+    'foto_3' => $foto_3,
+    'safety_stock' => $_POST['safety_stock']
   ]);
   $error = $db->error();
   if($error[0] != '00000')

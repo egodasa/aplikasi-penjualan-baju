@@ -9,7 +9,8 @@
     'hrg_beli' => $_POST['hrg_beli'],
     'hrg_jual' => $_POST['hrg_jual'],
     'stok' => $_POST['stok'],
-    'kd_kategori' => $_POST['kd_kategori']
+    'kd_kategori' => $_POST['kd_kategori'],
+    'safety_stock' => $_POST['safety_stock']
   ], ['kd_barang' => $_POST['kd_barang']]);
   $error = $db->error();
   if($error[0] != '00000')

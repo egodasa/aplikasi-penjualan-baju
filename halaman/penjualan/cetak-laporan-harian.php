@@ -38,7 +38,6 @@
           <tr>
             <th>No</th>
             <th>Kode Transaksi</th>
-            <th>Tanggal</th>
             <th>Total Harga (Rp)</th>
           </tr>
         </thead>
@@ -52,7 +51,6 @@
             <tr>
               <td><?=$no?></td>
               <td><?=$d['kd_transaksi']?></td>
-              <td><?=tanggal_indo($d['tgl_transaksi'])?></td>
               <td><?=rupiah($d['total_bayar'], "")?></td>
             </tr>
           <?php
@@ -60,7 +58,7 @@
             endforeach;
           ?>
           <tr>
-            <td class="text-right" colspan="3"><b>Total</b></td>
+            <td class="text-right" colspan="2"><b>Total</b></td>
             <td><?=rupiah($total, "")?></td>
           </tr>
         </tbody>

@@ -8,16 +8,16 @@ date_default_timezone_set('Asia/Jakarta');
  * $password: Password dari mysql
  */
 $nama_server = "localhost";
-$username = "root";
-$password = "mysql";
-$nama_database = "db_maryam";
+$username = "mandanon_maryam";
+$password = "qwe123*IOP";
+$nama_database = "mandanon_maryam";
 
 
 
 // Pengaturan aplikasi
 
 // Alamat web aplikasi
-$alamat_web = "http://localhost/maryam_store";
+$alamat_web = "http://maryam.mandan.online";
 
 // Nama perusahaan atau toko
 $nama_perusahaan = "Maryam Store";
