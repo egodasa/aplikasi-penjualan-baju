@@ -5,7 +5,7 @@
   require('../pengaturan/medoo.php');
   
   
-  $cek_login = $db->get("pengguna", "*", ["username" => $_POST['username'], "password" => md5($_POST['password']), "jenis_pengguna" => "Pelanggan"]);
+  $cek_login = $db->get("pengguna", "*", ["username" => $_POST['username'], "password" => md5($_POST['password']), "jenis_pengguna[!]" => "Pelanggan"]);
 
   if(empty($cek_login))
   {
@@ -17,8 +17,6 @@
     $_SESSION['username'] = $cek_login['username'];
     $_SESSION['nm_pengguna'] = $cek_login['nm_pengguna'];
     $_SESSION['jenis_pengguna'] = $cek_login['jenis_pengguna'];
-    header("Location: ".$alamat_web."/index.php");
-    
-    
+    header("Location: ".$alamat_web."/halaman/beranda");
   }
 ?>

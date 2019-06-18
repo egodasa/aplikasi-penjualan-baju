@@ -153,6 +153,11 @@
                             <th>Harga Jual (Rp)</th>
                             <th>Stok</th>
                             <th>Kategori</th>
+                            <th>Safety Stock</th>
+                            <th>Biaya Pesan</th>
+                            <th>Biaya Simpan</th>
+                            <th>Lead Time</th>
+                            <th>ROP</th>
                             <th>Aksi</th>
                           </tr>
                         </thead>
@@ -168,6 +173,11 @@
                               <td><?=rupiah($d['hrg_jual'], "")?></td>
                               <td><?=$d['stok']?></td>
                               <td><?=$d['nm_kategori']?></td>
+                              <td><?=$d['safety_stock']?></td>
+                              <td><?=$d['biaya_pesan']?></td>
+                              <td><?=$d['biaya_simpan']?></td>
+                              <td><?=$d['lead_time']?></td>
+                              <td><?=$d['rop']?></td>
                               <td>
                                 <div class="form-group">
                                   <button type="button" class="btn btn-primary" onclick="editPage(<?=$i?>)">Edit</button>
@@ -198,6 +208,8 @@
     
     <!-- notifikasi halaman crud ada disini -->
     <?php include("../../template/notifikasi-crud.php") ?>
+    
+    <script src="<?=$alamat_web?>/assets/js/axios.min.js"></script>
     <script>
       
       // detail setiap data ada disini
@@ -221,7 +233,14 @@
           document.getElementsByName('hrg_jual')[0].value = ""; 
           document.getElementsByName('stok')[0].value = ""; 
           document.getElementsByName('safety_stock')[0].value = "";
-          document.getElementsByName('kd_kategori')[0].value = ""; 
+          document.getElementsByName('kd_kategori')[0].value = "";
+          
+          document.getElementsByName('biaya_simpan')[0].value = "";
+          document.getElementsByName('biaya_pesan')[0].value = "";
+          document.getElementsByName('lead_time')[0].value = "";
+          document.getElementsByName('jumlah_penjualan')[0].value = "";
+          document.getElementsByName('rop')[0].value = "";
+          document.getElementsByName('eoq')[0].value = "";
         }
         else
         {
@@ -247,11 +266,17 @@
           document.getElementsByName('kd_kategori')[0].value = data_detail[id].kd_kategori; 
           document.getElementsByName('kd_barang')[0].value = data_detail[id].kd_barang;
           document.getElementsByName('safety_stock')[0].value = data_detail[id].safety_stock;
+          
+          document.getElementsByName('biaya_simpan')[0].value = data_detail[id].biaya_simpan;
+          document.getElementsByName('biaya_pesan')[0].value = data_detail[id].biaya_pesan;
+          document.getElementsByName('lead_time')[0].value = data_detail[id].lead_time;
+          document.getElementsByName('jumlah_penjualan')[0].value = data_detail[id].jumlah_penjualan;
+          document.getElementsByName('rop')[0].value = data_detail[id].rop;
+          document.getElementsByName('eoq')[0].value = data_detail[id].eoq;
         }
       }
       function hitungEoqDanRop()
       {
-        console.log("jalan")
         var R = document.getElementsByName('jumlah_penjualan')[0].value;
         var S = document.getElementsByName('biaya_pesan')[0].value;
         var C = document.getElementsByName('biaya_simpan')[0].value;
@@ -273,7 +298,7 @@
         var kd_barang = document.getElementsByName("kd_barang")[0].value;
         var tahun_penjualan = document.getElementsByName("tahun_penjualan")[0].value;
         if(kd_barang != "" && tahun_penjualan != ""){
-          axios.get("get-penjualan-tahun.php?kd_barang=" + kd_barang + "&tahun=" + tahun_penjualan)
+          axios.get("<?=$alamat_web?>/api/get-penjualan-tahun.php?kd_barang=" + kd_barang + "&tahun=" + tahun_penjualan)
             .then(function(res){
             	if(res.data.jml == undefined)
             	{
@@ -287,6 +312,10 @@
             .catch(function(err){
               document.getElementsByName("jumlah_penjualan")[0].value = "0";
             })          
+        }
+        else
+        {
+        	document.getElementsByName("jumlah_penjualan")[0].value = 0;
         }
       }
       

@@ -21,6 +21,10 @@
     <div class="sub-judul">
       <?=$alamat_perusahaan?>
     </div>
+    <div class="sub-judul">
+      Laporan Barang
+    </div>
+    <hr>
     <table class="tabel_laporan">
       <thead>
         <tr>
@@ -30,6 +34,11 @@
           <th>Harga Jual (Rp)</th>
           <th>Stok (Pcs)</th>
           <th>Kategori</th>
+          <th>Safety Stock</th>
+          <th>Biaya Pesan</th>
+          <th>Biaya Simpan</th>
+          <th>Lead Time</th>
+          <th>ROP</th>
         </tr>
       </thead>
       <tbody>
@@ -44,6 +53,12 @@
             <td class="kanan"><?=rupiah($d['hrg_jual'], "")?></td>
             <td class="kanan"><?=$d['stok']?></td>
             <td class="kiri"><?=$d['nm_kategori']?></td>
+
+            <td><?=$d['safety_stock']?></td>
+            <td><?=$d['biaya_pesan']?></td>
+            <td><?=$d['biaya_simpan']?></td>
+            <td><?=$d['lead_time']?></td>
+            <td><?=$d['rop']?></td>
           </tr>
         <?php
           $no++;
