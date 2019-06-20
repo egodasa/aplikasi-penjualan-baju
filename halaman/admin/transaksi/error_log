@@ -1,0 +1,10 @@
+[19-Jun-2019 11:34:52 Asia/Jakarta] PHP Notice:  Undefined index: kode_transaksi in /home/mandanon/maryam.mandan.online/halaman/admin/transaksi/proses-verifikasi.php on line 18
+[19-Jun-2019 11:40:17 Asia/Jakarta] PHP Notice:  Undefined index: kode_transaksi in /home/mandanon/maryam.mandan.online/halaman/admin/transaksi/proses-verifikasi.php on line 18
+[19-Jun-2019 11:40:17 Asia/Jakarta] PHP Warning:  json_decode() expects parameter 1 to be string, array given in /home/mandanon/maryam.mandan.online/halaman/admin/transaksi/proses-verifikasi.php on line 19
+[19-Jun-2019 11:41:02 Asia/Jakarta] PHP Notice:  Undefined index: kode_transaksi in /home/mandanon/maryam.mandan.online/halaman/admin/transaksi/proses-verifikasi.php on line 18
+[19-Jun-2019 11:41:22 Asia/Jakarta] PHP Notice:  Undefined index: kode_transaksi in /home/mandanon/maryam.mandan.online/halaman/admin/transaksi/proses-verifikasi.php on line 18
+[19-Jun-2019 11:41:48 Asia/Jakarta] PHP Notice:  Undefined index: kode_transaksi in /home/mandanon/maryam.mandan.online/halaman/admin/transaksi/proses-verifikasi.php on line 18
+[19-Jun-2019 11:42:00 Asia/Jakarta] PHP Notice:  Undefined index: kode_transaksi in /home/mandanon/maryam.mandan.online/halaman/admin/transaksi/proses-verifikasi.php on line 18
+[19-Jun-2019 11:49:06 Asia/Jakarta] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/mandanon/maryam.mandan.online/vendor/catfan/medoo/src/Medoo.php on line 363
+[19-Jun-2019 11:49:06 Asia/Jakarta] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/mandanon/maryam.mandan.online/vendor/catfan/medoo/src/Medoo.php on line 363
+[19-Jun-2019 11:56:40 Asia/Jakarta] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/mandanon/maryam.mandan.online/vendor/catfan/medoo/src/Medoo.php on line 363

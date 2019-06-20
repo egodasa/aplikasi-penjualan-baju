@@ -154,10 +154,6 @@
                             <th>Stok</th>
                             <th>Kategori</th>
                             <th>Safety Stock</th>
-                            <th>Biaya Pesan</th>
-                            <th>Biaya Simpan</th>
-                            <th>Lead Time</th>
-                            <th>ROP</th>
                             <th>Aksi</th>
                           </tr>
                         </thead>
@@ -174,10 +170,6 @@
                               <td><?=$d['stok']?></td>
                               <td><?=$d['nm_kategori']?></td>
                               <td><?=$d['safety_stock']?></td>
-                              <td><?=$d['biaya_pesan']?></td>
-                              <td><?=$d['biaya_simpan']?></td>
-                              <td><?=$d['lead_time']?></td>
-                              <td><?=$d['rop']?></td>
                               <td>
                                 <div class="form-group">
                                   <button type="button" class="btn btn-primary" onclick="editPage(<?=$i?>)">Edit</button>

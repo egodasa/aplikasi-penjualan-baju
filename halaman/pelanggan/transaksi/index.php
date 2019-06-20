@@ -88,7 +88,7 @@
                                     }
                                   ?>
                                   <p>
-                                  <a href="detail-transaksi.php?kd_transaksi=<?=$d['kd_transaksi']?>" class="btn btn-success btn-sm">Detail</a>
+                                  <a href="detail-transaksi.php?kd_transaksi=<?=$d['kd_transaksi']?>" class="btn btn-success btn-sm">Nota Pemesanan</a>
                                   </p>
                                 </div>
                               </td>

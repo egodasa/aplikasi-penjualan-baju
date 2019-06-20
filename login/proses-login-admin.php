@@ -9,7 +9,7 @@
 
   if(empty($cek_login))
   {
-    header("Location: ".$alamat_web."/login/index.php?login=0");
+    header("Location: ".$alamat_web."/login/admin.php?login=0");
   }
   else
   {

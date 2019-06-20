@@ -24,7 +24,7 @@ function notification(title, message, type, time = 1000, position = ['top', 'rig
 // id = id tabel
 // pesan = isi pesan
 // tombol = tulisan pada tombol
-function noRowsTable(id, pesan = "Tidak ada data yang ditampilkan." , tombol = "Muat Ulang")
+function noRowsTable(id, link = 'index.php', pesan = "Tidak ada data yang ditampilkan." , tombol = "Muat Ulang")
 {
   if(document.getElementById(id).rows.length == 1)
   {
@@ -38,7 +38,7 @@ function noRowsTable(id, pesan = "Tidak ada data yang ditampilkan." , tombol = "
     var kolomBaru = barisBaru.insertCell(0);
     
     kolomBaru.colSpan = document.getElementById('tabel').rows[0].cells.length;
-    kolomBaru.innerHTML = "<center><b>" + pesan + "</b> <br/> <br/> <a href='index.php' class='btn btn-primary'>" + tombol + "</a></center>";
+    kolomBaru.innerHTML = "<center><b>" + pesan + "</b> <br/> <br/> <a href='" + link + "' class='btn btn-primary'>" + tombol + "</a></center>";
   }
 }
 

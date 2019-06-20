@@ -37,13 +37,34 @@
               <div class="card-body">
                 <div class="row">
                   <div class="col-sm-4 col-xs-12">
-                    <img src="<?=$alamat_web?>/assets/img/produk/<?=$barang['foto_1']?>" style="width: 100%;">
+                  	<?php
+                  		if(!empty($barang['foto_1']))
+                  		{
+                  	?>
+                  		<img src="<?=$alamat_web?>/assets/img/produk/<?=$barang['foto_1']?>" style="width: 100%;">
+                  	<?php
+                  		}
+                  	?>
                   </div>
                   <div class="col-sm-4 col-xs-12">
-                    <img src="<?=$alamat_web?>/assets/img/produk/<?=$barang['foto_2']?>" style="width: 100%;">
+                  	<?php
+                  		if(!empty($barang['foto_2']))
+                  		{
+                  	?>
+                  		<img src="<?=$alamat_web?>/assets/img/produk/<?=$barang['foto_2']?>" style="width: 100%;">
+                  	<?php
+                  		}
+                  	?>
                   </div>
                   <div class="col-sm-4 col-xs-12">
-                    <img src="<?=$alamat_web?>/assets/img/produk/<?=$barang['foto_3']?>" style="width: 100%;">
+                  	<?php
+                  		if(!empty($barang['foto_3']))
+                  		{
+                  	?>
+                  		<img src="<?=$alamat_web?>/assets/img/produk/<?=$barang['foto_3']?>" style="width: 100%;">
+                  	<?php
+                  		}
+                  	?>
                   </div>
                 </div>
               </div>

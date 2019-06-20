@@ -15,7 +15,7 @@
     'alamat' => $_POST['alamat']
   ]);
   
-  $db->query("INSERT INTO detail_transaksi (kd_transaksi, kd_barang, jml) SELECT :kd_transaksi AS kd_transaksi, kd_barang, jumlah FROM keranjang WHERE kd_pengguna = :kd_pengguna", ['kd_transaksi' => $kd_transaksi, 'kd_pengguna' => $_SESSION['kd_pengguna']]);
+  $db->query("INSERT INTO detail_transaksi (kd_transaksi, kd_barang, jumlah) SELECT :kd_transaksi AS kd_transaksi, kd_barang, jumlah FROM keranjang WHERE kd_pengguna = :kd_pengguna", ['kd_transaksi' => $kd_transaksi, 'kd_pengguna' => $_SESSION['kd_pengguna']]);
   
   $db->query("DELETE FROM keranjang WHERE kd_pengguna = :kd_pengguna", ['kd_pengguna' => $_SESSION['kd_pengguna']]);
   

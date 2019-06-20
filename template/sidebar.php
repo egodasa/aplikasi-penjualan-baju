@@ -15,7 +15,8 @@
       ['judul' => 'Data Supplier' ,'url' => '/halaman/supplier/index.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Data Pembelian' ,'url' => '/halaman/pembelian/index.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Laporan Barang' ,'url' => '/halaman/barang/laporan.php', 'icon' => 'la-dashboard'],
-      ['judul' => 'Laporan Pembelian' ,'url' => '/halaman/pembelian/laporan.php', 'icon' => 'la-dashboard']
+      ['judul' => 'Laporan Pembelian' ,'url' => '/halaman/pembelian/laporan.php', 'icon' => 'la-dashboard'],
+      ['judul' => 'Laporan ROP' ,'url' => '/halaman/eoq/laporan.php', 'icon' => 'la-dashboard']
     ],
     'Pimpinan' => [
       ['judul' => 'Beranda' ,'url' => '/halaman/beranda', 'icon' => 'la-dashboard'],

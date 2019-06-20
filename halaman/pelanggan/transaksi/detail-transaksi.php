@@ -10,7 +10,7 @@
   
   $sql = "SELECT a.*, b.nm_barang, b.hrg_jual, (a.jumlah*b.hrg_jual) AS sub_total FROM detail_transaksi a JOIN barang b ON a.kd_barang = b.kd_barang WHERE a.kd_transaksi = :kd_transaksi";
   $detail_transaksi = $db->query($sql, ['kd_transaksi' => $_GET['kd_transaksi']])->fetchAll(PDO::FETCH_ASSOC);
-  $judul = "Detail Transaksi ".$transaksi['kd_transaksi'];  
+  $judul = "Nota Pemesanan ".$transaksi['kd_transaksi'];  
 
 ?>
 
@@ -34,7 +34,7 @@
                 <a href="index.php" class="btn btn-primary">< Kembali</a>
                 <div class="card">
                   <div class="card-header">
-                    <div class="card-title">Detail Transaksi No. <?=$transaksi['kd_transaksi']?></div>
+                    <div class="card-title">Nota Pemesanan No. <?=$transaksi['kd_transaksi']?></div>
                   </div>
                   <div class="card-body">
                     <p>
@@ -53,12 +53,14 @@
                     </tr>
                     <?php
                       $total = 0;
+                      $jumlah = 0;
                     ?>
                     
                     <?php
                       foreach($detail_transaksi as $nomor => $d)
                       {
                         $total += $d['sub_total'];
+                        $jumlah_pesan += $d['jumlah'];
                     ?>
                       <tr>
                         <td><?=($nomor+1)?></td>
@@ -70,7 +72,10 @@
                       }
                     ?>
                     <tr>
-                      <td colspan="3" class="text-right"><b>Sub Total</b></td>
+                      <td colspan="2" class="text-right"><b>Sub Total</b></td>
+                      <td>
+                        <?=$jumlah_pesan?>
+                      </td>
                       <td>
                         <input type="hidden" name="sub_total" value="<?=$total?>">
                         <?=rupiah($total)?>
