@@ -1,0 +1,5 @@
+[20-Jun-2019 21:36:05 Asia/Jakarta] PHP Notice:  Undefined index: kd_transaksi in /home/mandanon/maryam.mandan.online/halaman/pembelian/detail-pembelian.php on line 38
+[20-Jun-2019 21:36:05 Asia/Jakarta] PHP Notice:  Array to string conversion in /home/mandanon/maryam.mandan.online/halaman/pembelian/detail-pembelian.php on line 42
+[20-Jun-2019 21:36:05 Asia/Jakarta] PHP Notice:  Undefined variable: Array in /home/mandanon/maryam.mandan.online/halaman/pembelian/detail-pembelian.php on line 42
+[20-Jun-2019 21:36:05 Asia/Jakarta] PHP Notice:  Undefined variable: detail_transaksi in /home/mandanon/maryam.mandan.online/halaman/pembelian/detail-pembelian.php on line 59
+[20-Jun-2019 21:36:05 Asia/Jakarta] PHP Warning:  Invalid argument supplied for foreach() in /home/mandanon/maryam.mandan.online/halaman/pembelian/detail-pembelian.php on line 59

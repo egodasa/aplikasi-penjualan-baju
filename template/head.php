@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="<?=$alamat_web?>/assets/css/demo.css">
   <link rel="stylesheet" href="<?=$alamat_web?>/assets/css/selectize.bt3.css">
   <link href="<?=$alamat_web?>/assets/css/pikaday.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.css" />
   <style>
   .carousel {
     margin-top: 20px;

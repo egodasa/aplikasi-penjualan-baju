@@ -5,7 +5,7 @@
   
   // Proses menambah data ke database
   $db->query("DELETE FROM barang WHERE kd_barang = :kd_barang", [
-    'kd_barang' => $_POST['kd_barang']
+    'kd_barang' => $_GET['kd_barang']
   ]);
   $error = $db->error();
   if($error[0] != '00000')

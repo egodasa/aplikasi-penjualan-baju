@@ -78,3 +78,5 @@ Stack trace:
 #0 /home/mandanon/maryam.mandan.online/cara-belanja.php(22): include()
 #1 {main}
   thrown in /home/mandanon/maryam.mandan.online/template/header.php on line 68
+[20-Jun-2019 14:17:43 Asia/Jakarta] PHP Notice:  Undefined index: deskripsi in /home/mandanon/maryam.mandan.online/template/header.php on line 57
+[20-Jun-2019 14:18:08 Asia/Jakarta] PHP Notice:  Undefined index: deskripsi in /home/mandanon/maryam.mandan.online/template/header.php on line 57

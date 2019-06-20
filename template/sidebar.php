@@ -7,7 +7,10 @@
       ['judul' => 'Daftar Transaksi' ,'url' => '/halaman/admin/transaksi', 'icon' => 'la-dashboard'],
       ['judul' => 'Data Pelanggan' ,'url' => '/halaman/pelanggan/index.php', 'icon' => 'la-dashboard'],
       ['judul' => 'Data Kota' ,'url' => '/halaman/kota/index.php', 'icon' => 'la-dashboard'],
-      ['judul' => 'Data Jasa Pengiriman' ,'url' => '/halaman/jasa/index.php', 'icon' => 'la-dashboard']
+      ['judul' => 'Data Jasa Pengiriman' ,'url' => '/halaman/jasa/index.php', 'icon' => 'la-dashboard'],
+      ['judul' => 'Laporan Penjualan Harian' ,'url' => '/halaman/penjualan/laporan.php', 'icon' => 'la-dashboard'],
+      ['judul' => 'Laporan Penjualan Bulanan' ,'url' => '/halaman/penjualan/laporan-bulanan.php', 'icon' => 'la-dashboard'],
+      ['judul' => 'Laporan Penjualan Tahunan' ,'url' => '/halaman/penjualan/laporan-tahunan.php', 'icon' => 'la-dashboard']
     ],
     'Karyawan Gudang' => [
       ['judul' => 'Beranda' ,'url' => '/halaman/beranda', 'icon' => 'la-dashboard'],

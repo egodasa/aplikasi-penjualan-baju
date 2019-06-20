@@ -28,6 +28,7 @@
                     <tr>
                       <th>No</th>
                       <th>Nama Produk</th>
+                      <th>Keterangan</th>
                       <th>Jumlah</th>
                       <th>Sub Total</th>
                       <th colspan="2">Aksi</th>
@@ -47,13 +48,15 @@
                       <tr>
                         <td><?=($nomor+1)?></td>
                         <td><?=$d['nm_barang']?></td>
+                        <td><?=$d['keterangan']?></td>
                         <td><?=$d['jumlah']?></td>
                         <td><?=rupiah($d['sub_total'])?></td>
                         <td>
                           <form action="<?=$alamat_web?>/keranjang/edit.php" method="POST">
                             <input type="hidden" name="kd_barang" value="<?=$d['kd_barang']?>" />
+                            <textarea name="keterangan" class="form-control"><?=$d['keterangan']?></textarea>
                             <input type="number" min=1 name="jumlah" value="<?=$d['jumlah']?>" class="form-control" required>
-                            <button type="submit" class="btn btn-sm btn-success">Ganti Jumlah</button>
+                            <button type="submit" class="btn btn-sm btn-success">Update</button>
                           </form>
                         </td>
                         <td>
@@ -64,11 +67,11 @@
                       }
                     ?>
                     <tr>
-                      <td colspan="5">Total</td>
+                      <td colspan="6">Total</td>
                       <td><?=rupiah($total)?></td>
                     </tr>
                     <tr>
-                      <td colspan="6">
+                      <td colspan="7">
                         <a href="<?=$alamat_web?>/checkout.php" class="btn btn-success">Selesaikan Belanja</a>
                       </td>
                     </tr>

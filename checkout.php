@@ -42,6 +42,7 @@
                     <tr>
                       <th>No</th>
                       <th>Nama Produk</th>
+                      <th>Keterangan</th>
                       <th>Jumlah</th>
                       <th>Sub Total</th>
                     </tr>
@@ -57,6 +58,7 @@
                       <tr>
                         <td><?=($nomor+1)?></td>
                         <td><?=$d['nm_barang']?></td>
+                        <td><?=$d['keterangan']?></td>
                         <td><?=$d['jumlah']?></td>
                         <td><?=rupiah($d['sub_total'])?></td>
                       </tr>
@@ -64,14 +66,14 @@
                       }
                     ?>
                     <tr>
-                      <td colspan="3" class="text-right"><b>Sub Total</b></td>
+                      <td colspan="4" class="text-right"><b>Sub Total</b></td>
                       <td>
                         <input type="hidden" name="sub_total" value="<?=$total?>">
                         <?=rupiah($total)?>
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="2">
+                      <td colspan="3">
                         <div class="form-group">
                           <label>Pilih Kota Tujuan</label>
                           <select name="id_kota" class="form-control">
@@ -100,13 +102,13 @@
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="3" class="text-right"><b>Total yang Harus Dibayar</b></td>
+                      <td colspan="4" class="text-right"><b>Total yang Harus Dibayar</b></td>
                       <td>
                         <span name="total"></span>
                       </td>
                     </tr>
                     <tr>
-                      <td colspan="4">
+                      <td colspan="5">
                         <form action="selesaikan-belanja.php" method="POST">
                           <input type="hidden" name="id_ongkir" >
                           <div class="form-grooup">

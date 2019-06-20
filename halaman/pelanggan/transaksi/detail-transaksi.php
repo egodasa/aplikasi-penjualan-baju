@@ -48,6 +48,7 @@
                     <tr>
                       <th>No</th>
                       <th>Nama Produk</th>
+                      <th>Keterangan</th>
                       <th>Jumlah</th>
                       <th>Sub Total</th>
                     </tr>
@@ -65,6 +66,7 @@
                       <tr>
                         <td><?=($nomor+1)?></td>
                         <td><?=$d['nm_barang']?></td>
+                        <td><?=$d['keterangan']?></td>
                         <td><?=$d['jumlah']?></td>
                         <td><?=rupiah($d['sub_total'])?></td>
                       </tr>

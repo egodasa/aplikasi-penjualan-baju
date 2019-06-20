@@ -68,19 +68,43 @@
                   </div>
                 </div>
               </div>
-              <?php
-                if(isset($_SESSION['jenis_pengguna']) && $_SESSION['jenis_pengguna'] == "Pelanggan")
-                {
-              ?>
+              
               <div class="card-footer">
                 <div class="row">
-                  <div class="col-sm-6 col-xs-12">
-                    <h4>Tambahkan ke Keranjang</h4>
+                	<div class="col-md-12 col-sm-12 col-xs-12">
+                    <h5>Deskripsi Produk</h5>
+                  </div>
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <p>
+                    	<?php
+                    		if(empty($barang['deskripsi']))
+                    		{
+                    			echo "Tidak ada deskripsi untuk produk ini!";
+                    		}
+                    		else
+                    		{
+                    			echo $barang['deskripsi'];	
+                    		}
+                    	?>
+                    	
+                    </p>
+                  </div>
+                <?php
+	                if(isset($_SESSION['jenis_pengguna']) && $_SESSION['jenis_pengguna'] == "Pelanggan")
+	                {
+	              ?>
+                  <div class="col-sm-12 col-xs-12">
+                    <h5>Tambahkan ke Keranjang</h5>
                   </div>
                   <div class="col-sm-6 col-xs-12">
                     <form method="POST" action="<?=$alamat_web?>/keranjang/tambah.php">
                       <input type="hidden" name="kd_barang" value="<?=$_GET['kd_barang']?>" />
-                      <input type="number" name="jumlah" />
+                      <div class="form-group">
+                      	<input type="number" name="jumlah" placeholder="Jumlah Dipesan" class="form-control" />
+                      </div>
+                      <div class="form-group">
+                      	<textarea class="form-control" name="keterangan" placeholder="Contoh: Saya pilih warna biru"></textarea>
+                      </div>
                       <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>
                   </div>

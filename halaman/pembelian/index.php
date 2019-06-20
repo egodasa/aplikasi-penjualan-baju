@@ -64,6 +64,9 @@
                                 <div class="form-group">
                                   <a href="proses-hapus.php?kd_pembelian=<?=$d['kd_pembelian']?>" class="btn btn-danger">Hapus</a>
                                 </div>
+                                <div class="form-group">
+                                  <a href="detail-pembelian.php?kd_pembelian=<?=$d['kd_pembelian']?>" class="btn btn-success">Detail Pembelian</a>
+                                </div>
                               </td>
                             </tr>
                           <?php

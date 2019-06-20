@@ -68,64 +68,54 @@
                           <?php endforeach; ?>
                         </select>
                       </div>
-                      
                       <div class="form-group">
-                        <label for="foto_1">Foto 1</label>
-                        <input type="file" class="form-control" name="foto_1">
+                      	<label for="deskripsi">Deskripsi</label>
+                      	<div id="deskripsi"></div>
+                      	<input type="hidden" name="deskripsi" id="deskripsi_isi" />
                       </div>
-                      <div class="form-group">
-                        <label for="foto_2">Foto 2</label>
-                        <input type="file" class="form-control" name="foto_2">
-                      </div>
-                      <div class="form-group">
-                        <label for="foto_3">Foto 3</label>
-                        <input type="file" class="form-control" name="foto_3">
-                      </div>
+                    <div class="row">
+                    	<div class="col-xs-12 col-sm-4">
+                    		<div class="form-group">
+	                        <label for="foto_1">Foto 1</label>
+	                        <p id="foto_1"></p>
+	                        <input type="file" class="form-control" name="foto_1">
+	                      </div>
+                    	</div>
+                    	<div class="col-xs-12 col-sm-4">
+                    		<div class="form-group">
+	                        <label for="foto_2">Foto 2</label>
+	                        <p id="foto_2"></p>
+	                        <input type="file" class="form-control" name="foto_2">
+	                      </div>
+                    	</div>
+                    	<div class="col-xs-12 col-sm-4">
+                    		<div class="form-group">
+	                        <label for="foto_3">Foto 3</label>
+	                        <p id="foto_3"></p>
+	                        <input type="file" class="form-control" name="foto_3">
+	                      </div>
+                    	</div>
+                    </div>
                       <div class="row">
-                        <div class="col-md-6 col-xs-12">
-                          <div class="form-group">
-                            <label for="nohp">Tahun Penjualan (Tahun)</label>
-                            <input type="text" class="form-control" name="tahun_penjualan">
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-xs-12">
-                          <div class="form-group">
-                            <label for="nohp">Jumlah Penjualan (Pcs)</label>
-                            <input type="text" class="form-control" name="jumlah_penjualan">
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-xs-12">
+                        <div class="col-md-4 col-xs-12">
                           <div class="form-group">
                             <label for="nohp">Biaya Pesan (RP)</label>
                             <input type="text" class="form-control" name="biaya_pesan">
                           </div>
                         </div>
-                        <div class="col-md-6 col-xs-12">
+                        <div class="col-md-4 col-xs-12">
                           <div class="form-group">
                             <label for="nohp">Biaya Penyimpanan (Rp)</label>
                             <input type="text" class="form-control" name="biaya_simpan">
                           </div>
                         </div>
-                        <div class="col-md-6 col-xs-12">
+                        <div class="col-md-4 col-xs-12">
                           <div class="form-group">
                             <label for="nohp">Lead Time (Hari)</label>
                             <input type="text" class="form-control" name="lead_time">
                           </div>
                         </div>
-                        <div class="col-md-6 col-xs-12">
-                          <div class="form-group">
-                            <label for="nohp">Hasil Perhitungan EOQ</label>
-                            <input type="text" class="form-control" name="eoq">
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-xs-12">
-                          <div class="form-group">
-                            <label for="nohp">Hasil Perhitungan ROP</label>
-                            <input type="text" class="form-control" name="rop">
-                          </div>
-                        </div>
                       </div>
-                      
                     </div>
                     <div class="card-action">
                       <button type="submit" class="btn btn-success">Simpan</button>
@@ -149,6 +139,7 @@
                           <tr>
                             <th>No</th>
                             <th>Nama Barang</th>
+                            <th>Deskripsi</th>
                             <th>Harga Beli (Rp)</th>
                             <th>Harga Jual (Rp)</th>
                             <th>Stok</th>
@@ -165,6 +156,7 @@
                             <tr>
                               <td><?=$no?></td>
                               <td><?=$d['nm_barang']?></td>
+                              <td><?=$d['deskripsi']?></td>
                               <td><?=rupiah($d['hrg_beli'], "")?></td>
                               <td><?=rupiah($d['hrg_jual'], "")?></td>
                               <td><?=$d['stok']?></td>
@@ -203,6 +195,16 @@
     
     <script src="<?=$alamat_web?>/assets/js/axios.min.js"></script>
     <script>
+    	
+    	$(document).ready(function() {
+			  $('#deskripsi').summernote({
+				  callbacks: {
+				    onChange: function(contents, $editable) {
+				      $('#deskripsi_isi').val(contents);
+				    }
+				  }
+				});
+			});
       
       // detail setiap data ada disini
       var data_detail = <?=json_encode($daftar_barang)?>;
@@ -230,9 +232,11 @@
           document.getElementsByName('biaya_simpan')[0].value = "";
           document.getElementsByName('biaya_pesan')[0].value = "";
           document.getElementsByName('lead_time')[0].value = "";
-          document.getElementsByName('jumlah_penjualan')[0].value = "";
-          document.getElementsByName('rop')[0].value = "";
-          document.getElementsByName('eoq')[0].value = "";
+          
+          // Kosongkan bagian html foto
+          document.getElementById('foto_1').innerHTML = "";
+          document.getElementById('foto_2').innerHTML = "";
+          document.getElementById('foto_3').innerHTML = "";
         }
         else
         {
@@ -262,64 +266,43 @@
           document.getElementsByName('biaya_simpan')[0].value = data_detail[id].biaya_simpan;
           document.getElementsByName('biaya_pesan')[0].value = data_detail[id].biaya_pesan;
           document.getElementsByName('lead_time')[0].value = data_detail[id].lead_time;
-          document.getElementsByName('jumlah_penjualan')[0].value = data_detail[id].jumlah_penjualan;
-          document.getElementsByName('rop')[0].value = data_detail[id].rop;
-          document.getElementsByName('eoq')[0].value = data_detail[id].eoq;
+          
+          var foto_1 = data_detail[id].foto_1;
+          var foto_2 = data_detail[id].foto_2;
+          var foto_3 = data_detail[id].foto_3;
+          
+          if(foto_1.length == 0)
+          {
+          	foto_1 = "*Foto tidak ada. Silahkan upload foto baru.";
+          }
+          else
+          {
+          	foto_1 = "<img width='300' height='300' src='/assets/img/produk/" + foto_1 + "' /> <br> *Upload foto baru untuk ganti foto.";
+          }
+          if(foto_2.length == 0)
+          {
+          	foto_2 = "*Foto tidak ada. Silahkan upload foto baru.";
+          }
+          else
+          {
+          	foto_2 = "<img width='300' height='300' src='/assets/img/produk/" + foto_2 + "' /> <br> *Upload foto baru untuk ganti foto.";
+          }
+          if(foto_3.length == 0)
+          {
+          	foto_3 = "*Foto tidak ada. Silahkan upload foto baru.";
+          }
+          else
+          {
+          	foto_3 = "<img width='300' height='300' src='/assets/img/produk/" + foto_3 + "' /> <br> *Upload foto baru untuk ganti foto.";
+          }
+          document.getElementById('foto_1').innerHTML = foto_1;
+          document.getElementById('foto_2').innerHTML = foto_2;
+          document.getElementById('foto_3').innerHTML = foto_3;
+          
+          $("#deskripsi").summernote("code", data_detail[id].deskripsi);
         }
       }
-      function hitungEoqDanRop()
-      {
-        var R = document.getElementsByName('jumlah_penjualan')[0].value;
-        var S = document.getElementsByName('biaya_pesan')[0].value;
-        var C = document.getElementsByName('biaya_simpan')[0].value;
-        var LT = document.getElementsByName('lead_time')[0].value;
-        var EOQ = 0; 
-        var ROP = 0; 
-        if(R != "" && S != "" && C != "" && LT != "")
-        {
-          EOQ = Math.sqrt((2 * R * S) / C);
-          ROP = (R / 365) * LT;
-          document.getElementsByName("eoq")[0].value = Math.round(EOQ);
-          document.getElementsByName("rop")[0].value = Math.round(ROP);
-        }
-      }
-      
-      // Mengambil jumlah penjualan per tahun berdasarkan tahun dan barang
-      
-      function getBanyakPenjualan(){
-        var kd_barang = document.getElementsByName("kd_barang")[0].value;
-        var tahun_penjualan = document.getElementsByName("tahun_penjualan")[0].value;
-        if(kd_barang != "" && tahun_penjualan != ""){
-          axios.get("<?=$alamat_web?>/api/get-penjualan-tahun.php?kd_barang=" + kd_barang + "&tahun=" + tahun_penjualan)
-            .then(function(res){
-            	if(res.data.jml == undefined)
-            	{
-            		document.getElementsByName("jumlah_penjualan")[0].value = 0;
-            	}
-            	else
-            	{
-            		document.getElementsByName("jumlah_penjualan")[0].value = res.data.jml;
-            	}
-            })          
-            .catch(function(err){
-              document.getElementsByName("jumlah_penjualan")[0].value = "0";
-            })          
-        }
-        else
-        {
-        	document.getElementsByName("jumlah_penjualan")[0].value = 0;
-        }
-      }
-      
-      // Menghitung eoq dan rop saat terjadi perubahan nilai di jumlah penjualan, biaya pesan, biaya simpan dan lead time
-      document.getElementsByName('jumlah_penjualan')[0].addEventListener("keyup", hitungEoqDanRop);
-      document.getElementsByName('biaya_pesan')[0].addEventListener("keyup", hitungEoqDanRop);
-      document.getElementsByName('biaya_simpan')[0].addEventListener("keyup", hitungEoqDanRop);
-      document.getElementsByName('lead_time')[0].addEventListener("keyup", hitungEoqDanRop);
-      
-      // Event untuk perubahan barang dan tahun penjualan
-      document.getElementsByName("tahun_penjualan")[0].addEventListener("blur", getBanyakPenjualan)  
-      document.getElementsByName("kd_barang")[0].addEventListener("change", getBanyakPenjualan) 
+
       noRowsTable('tabel');
     </script>
   </body>

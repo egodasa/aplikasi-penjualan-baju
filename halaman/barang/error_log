@@ -1,0 +1,38 @@
+[20-Jun-2019 11:03:49 Asia/Jakarta] PHP Notice:  Undefined index: kd_barang in /home/mandanon/maryam.mandan.online/halaman/barang/proses-hapus.php on line 8
+[20-Jun-2019 11:04:07 Asia/Jakarta] PHP Notice:  Undefined index: kd_barang in /home/mandanon/maryam.mandan.online/halaman/barang/proses-hapus.php on line 8
+[20-Jun-2019 20:25:17 Asia/Jakarta] PHP Warning:  unlink(../../assets/img/produk/310519233146079500.): No such file or directory in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 21
+[20-Jun-2019 20:25:17 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function fileUpload() in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 22
+[20-Jun-2019 20:27:17 Asia/Jakarta] PHP Warning:  unlink(../../assets/img/produk/310519233146079500.): No such file or directory in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 24
+[20-Jun-2019 20:27:17 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function fileUpload() in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php:25
+Stack trace:
+#0 {main}
+  thrown in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 25
+[20-Jun-2019 20:29:53 Asia/Jakarta] PHP Warning:  unlink(../../assets/img/produk/): Is a directory in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 21
+[20-Jun-2019 20:29:53 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function fileUpload() in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 22
+[20-Jun-2019 20:30:06 Asia/Jakarta] PHP Warning:  unlink(../../assets/img/produk/): Is a directory in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 21
+[20-Jun-2019 20:30:06 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function fileUpload() in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 22
+[20-Jun-2019 20:30:09 Asia/Jakarta] PHP Warning:  unlink(../../assets/img/produk/): Is a directory in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 21
+[20-Jun-2019 20:30:09 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function fileUpload() in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 22
+[20-Jun-2019 20:31:44 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Call to undefined function fileUpload() in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php:31
+Stack trace:
+#0 {main}
+  thrown in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 31
+[20-Jun-2019 20:34:39 Asia/Jakarta] PHP Notice:  Undefined index: foto_1 in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 56
+[20-Jun-2019 20:34:39 Asia/Jakarta] PHP Notice:  Undefined index: foto_2 in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 57
+[20-Jun-2019 20:34:39 Asia/Jakarta] PHP Notice:  Undefined index: foto_3 in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 58
+[20-Jun-2019 20:35:54 Asia/Jakarta] PHP Notice:  Undefined index: foto_1 in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 56
+[20-Jun-2019 20:35:54 Asia/Jakarta] PHP Notice:  Undefined index: foto_2 in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 57
+[20-Jun-2019 20:35:54 Asia/Jakarta] PHP Notice:  Undefined index: foto_3 in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 58
+[20-Jun-2019 20:37:57 Asia/Jakarta] PHP Warning:  unlink(../../assets/img/produk/170619020443669200.): No such file or directory in /home/mandanon/maryam.mandan.online/halaman/barang/proses-edit.php on line 39

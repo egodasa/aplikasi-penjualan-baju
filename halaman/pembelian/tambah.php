@@ -8,9 +8,20 @@
   {
     $_SESSION['kd_pembelian'] = $_POST['kd_pembelian'];  
     $_SESSION['tgl_pembelian'] = $_POST['tgl_pembelian'];  
-    $_SESSION['kd_supplier'] = $_POST['kd_supplier'];  
-    $supplier_tmp = $db->query("SELECT nm_supplier FROM supplier WHERE kd_supplier = :kd_supplier", ['kd_supplier' => $_POST['kd_supplier']])->fetch();
-    $_SESSION['nm_supplier'] = $supplier_tmp['nm_supplier'];
+    $_SESSION['kd_supplier'] = $_POST['kd_supplier'];
+    
+    // Jika nama supplier diketik manual, maka tambahkan supplier tsb ke db dan ambil id serta namanyaa
+    if(!is_numeric($_POST['kd_supplier']))
+    {
+    	$db->query("INSERT INTO supplier (nm_supplier) VALUES (:nm_supplier)", ['nm_supplier' => $_POST['kd_supplier']]);
+    	$_SESSION['kd_supplier'] = $db->id();
+    	$_SESSION['nm_supplier'] = $_POST['kd_supplier'];
+    }
+    else
+    {
+    	$supplier_tmp = $db->query("SELECT nm_supplier FROM supplier WHERE kd_supplier = :kd_supplier", ['kd_supplier' => $_POST['kd_supplier']])->fetch();
+	    $_SESSION['nm_supplier'] = $supplier_tmp['nm_supplier'];
+    }
   }
   
   if(isset($_SESSION['kd_pembelian']))

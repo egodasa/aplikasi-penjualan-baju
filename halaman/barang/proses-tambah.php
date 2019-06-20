@@ -8,9 +8,20 @@
   $foto_2 = "";
   $foto_3 = "";
   
-  $foto_1 = fileUpload($_FILES['foto_1'], "../../assets/img/produk/");
-  $foto_2 = fileUpload($_FILES['foto_2'], "../../assets/img/produk/");
-  $foto_3 = fileUpload($_FILES['foto_3'], "../../assets/img/produk/");
+  if(file_exists($_FILES['foto_1']['tmp_name']) || is_uploaded_file($_FILES['foto_1']['tmp_name']))
+  {
+  	$foto_1 = fileUpload($_FILES['foto_1'], "../../assets/img/produk/");
+  }
+  
+  if(file_exists($_FILES['foto_2']['tmp_name']) || is_uploaded_file($_FILES['foto_2']['tmp_name']))
+  {
+  	$foto_2 = fileUpload($_FILES['foto_2'], "../../assets/img/produk/");
+  }
+  
+  if(file_exists($_FILES['foto_3']['tmp_name']) || is_uploaded_file($_FILES['foto_3']['tmp_name']))
+  {
+  	$foto_3 = fileUpload($_FILES['foto_3'], "../../assets/img/produk/");
+  }
   
   // Proses menambah data ke database
   $db->insert("barang", [
@@ -26,9 +37,7 @@
     'biaya_pesan' => $_POST['biaya_pesan'],
     'biaya_simpan' => $_POST['biaya_simpan'],
     'lead_time' => $_POST['lead_time'],
-    'jumlah_penjualan' => $_POST['jumlah_penjualan'],
-    'rop' => $_POST['rop'],
-    'eoq' => $_POST['eoq']
+    'deskripsi' => $_POST['deskripsi']
   ]);
   $error = $db->error();
   if($error[0] != '00000')

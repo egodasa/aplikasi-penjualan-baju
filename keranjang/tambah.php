@@ -18,6 +18,7 @@
         'kd_pengguna' => $_SESSION['kd_pengguna'],
         'kd_barang' => $_POST['kd_barang'],
         'jumlah' => $_POST['jumlah'],
+        'keterangan' => $_POST['keterangan']
       ]);
     }
     else

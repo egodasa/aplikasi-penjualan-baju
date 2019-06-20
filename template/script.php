@@ -1,4 +1,7 @@
 <script src="<?=$alamat_web?>/assets/js/core/jquery.3.2.1.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.min.js"></script>
+
 <script src="<?=$alamat_web?>/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
 <script src="<?=$alamat_web?>/assets/js/core/popper.min.js"></script>
 <script src="<?=$alamat_web?>/assets/js/core/bootstrap.min.js"></script>
